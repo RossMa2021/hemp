@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>undo1.ico</file>
+    </qresource>
+</RCC>
