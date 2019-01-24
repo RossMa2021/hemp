@@ -56,10 +56,20 @@ QString MainWindow::GetBingBgImgAddr()
   QString code = reply->readAll();
 
   //处理获得jpg地址
-  QString findBeginCode  = "<img id=\"bgImg\" src=\"";
-  QString findEndCode  = "1920x1080.jpg\" style=\"display:none\"";
+//  QString findBeginCode  = "<img id=\"bgImg\" src=\"";
+//  QString findEndCode  = "1920x1080.jpg\" style=\"display:none\"";
+//  qint64 ibegin = code.indexOf(findBeginCode) + findBeginCode.length();
+//  qint64 iend = code.indexOf(findEndCode) + 13;
+//  QString jpgAddress = "https://cn.bing.com" + code.mid(ibegin,iend - ibegin);
+//  qDebug() <<"jpg address is "<<jpgAddress;
+
+  //new
+  QString findBeginCode  = "g_img={url: \"";
+  QString findEndCode  = "_1920x1080.jpg\"}";
   qint64 ibegin = code.indexOf(findBeginCode) + findBeginCode.length();
-  qint64 iend = code.indexOf(findEndCode) + 13;
+  qint64 iend = code.indexOf(findEndCode) + 14;
+  qDebug() <<"ibegin  is "<<ibegin;
+  qDebug() <<"iend  is "<<iend;
   QString jpgAddress = "https://cn.bing.com" + code.mid(ibegin,iend - ibegin);
   qDebug() <<"jpg address is "<<jpgAddress;
 
